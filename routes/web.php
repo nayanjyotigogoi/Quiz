@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\QuizController;
+use App\Http\Controllers\RegistrationController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -13,6 +15,17 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+// Route::get('/', function () {
+//     return view('welcome');
+// });
+
+Route::get('/', [QuizController::class, 'index']);
+
+
+
+//registration
+Route::get('/register', [RegistrationController::class, 'register']);
+
+//login
+Route::get('login', [RegistrationController::class, 'login']);
+Route::post('store',[RegistrationController::class, 'store']);
