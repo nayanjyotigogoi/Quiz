@@ -2,63 +2,39 @@
 
 namespace App\Http\Controllers;
 
-
 use Illuminate\Http\Request;
-use App\Models\Registration;
+use App\Models\User;
+use Illuminate\Support\Facades\Hash;
 
 class RegistrationController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function register()
     {
-       
-        return view('register.view');
-
+        return view('register.register_view');
     }
 
     public function login()
     {
-       
         return view('login.login');
-
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
     public function store(Request $request)
     {
+        // ✅ Validate Request
         $request->validate([
-            
-            'email'=>'required|unique:registration',
-            'name'=>'required',
-            'password'=>'required',
-           
+            'name' => 'required|string|max:255',
+            'email' => 'required|email|unique:users',
+            'password' => 'required|min:6|confirmed',
         ]);
-            $datas = new Registration;
-            $datas->email = $request->email;
-            $datas->name = $request->name;
-            $datas->password = $request->password;
-            $datas->save();
 
+        // ✅ Store in Users Table using the User Model
+        $user = new User();
+        $user->name = $request->name;
+        $user->email = $request->email;
+        $user->password = Hash::make($request->password); // ✅ Hash the password
+        $user->save();
 
-            return redirect('login')->with('success','Registered Successfully');
+        // ✅ Redirect to login with success message
+        return redirect()->route('login')->with('success', 'Registered Successfully! Please log in.');
     }
 }

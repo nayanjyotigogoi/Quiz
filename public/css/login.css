@@ -1,0 +1,157 @@
+        /* Background Gradient */
+        body {
+            background: linear-gradient(135deg, #7C93C3, #4A69BB);
+            height: 100vh;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        /* Login Container - Glassmorphism */
+        .login-container {
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(12px);
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.2);
+            width: 80%;
+            max-width: 400px;
+            animation: fadeIn 1s ease-in-out;
+            box-sizing: border-box;
+            text-align: center;
+        }
+
+        /* Heading */
+        .login-container h2 {
+            font-size: 26px;
+            color: #ffffff;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        /* Form Group */
+        .form-group {
+            margin-bottom: 15px;
+            text-align: left;
+        }
+
+        /* Input Fields */
+        .form-group input {
+            width: 90%;
+            padding: 12px;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            border-radius: 8px;
+            font-size: 16px;
+            background: rgba(255, 255, 255, 0.2);
+            color: white;
+            outline: none;
+            transition: 0.3s ease-in-out;
+        }
+
+        /* Placeholder Color */
+        .form-group input::placeholder {
+            color: rgba(255, 255, 255, 0.6);
+        }
+
+        /* Input Focus Effect */
+        .form-group input:focus {
+            border-color: #FFD700;
+            box-shadow: 0 0 10px rgba(255, 215, 0, 0.6);
+        }
+
+        /* Login Button */
+        .submit-btn {
+            width: 100%;
+            background: linear-gradient(90deg, #FFD700, #FFA500);
+            color: #333;
+            font-size: 18px;
+            padding: 12px;
+            border: none;
+            border-radius: 8px;
+            font-weight: bold;
+            text-transform: uppercase;
+            cursor: pointer;
+            transition: 0.3s ease-in-out;
+            box-shadow: 0px 4px 10px rgba(255, 165, 0, 0.3);
+        }
+
+        /* Button Hover Effect */
+        .submit-btn:hover {
+            background: linear-gradient(90deg, #FFA500, #FF4500);
+            transform: scale(1.05);
+            box-shadow: 0px 6px 15px rgba(255, 69, 0, 0.4);
+        }
+
+        /* Forgot Password Link */
+        .forgot-password {
+            display: block;
+            margin-top: 10px;
+            color: #FFD700;
+            text-decoration: none;
+            font-size: 14px;
+            transition: 0.3s;
+        }
+
+        .forgot-password:hover {
+            color: #FFA500;
+            text-decoration: underline;
+        }
+
+        /* Social Login Buttons */
+        .social-login {
+            margin-top: 20px;
+        }
+
+        .social-btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+            padding: 10px;
+            border-radius: 8px;
+            font-size: 16px;
+            color: white;
+            border: none;
+            cursor: pointer;
+            transition: 0.3s;
+            margin-bottom: 10px;
+            font-weight: bold;
+        }
+
+        .google-btn {
+            background: #DB4437;
+        }
+
+        .google-btn:hover {
+            background: #C1351D;
+        }
+
+        .facebook-btn {
+            background: #3B5998;
+        }
+
+        .facebook-btn:hover {
+            background: #2E4372;
+        }
+
+        /* Error Messages */
+        .text-danger {
+            color: #FFD700;
+            font-size: 14px;
+            margin-top: 5px;
+        }
+
+        /* Fade In Animation */
+        @keyframes fadeIn {
+            0% {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }

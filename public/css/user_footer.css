@@ -1,0 +1,81 @@
+/* Ensure Full Page Layout */
+html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Page Wrapper */
+.wrapper {
+    flex: 1; /* Pushes footer to the bottom */
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+/* Main Content */
+.content {
+    flex: 1; /* Ensures content expands */
+}
+
+/* Footer Styling (Always Stays at Bottom) */
+.user-footer {
+
+    position: relative; /* Changed from fixed */
+    bottom: 0;
+    width: 100%;
+    text-align: center;
+    padding: 20px;
+    color: white;
+    font-size: 14px;
+    font-weight: 500;
+    position: fixed; /* Fixes footer at bottom */
+    bottom: 0;
+    left: 0;
+    height: auto;
+    box-shadow: 0px -4px 10px rgba(0, 0, 0, 0.2);
+    
+    /* Gradient Background Animation */
+    background: linear-gradient(-45deg, #ff512f, #dd2476, #a18cd1, #fbc2eb);
+    background-size: 400% 400%;
+    animation: gradientFooter 10s ease infinite;
+}
+
+/* Gradient Animation */
+@keyframes gradientFooter {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+/* Footer Links */
+.user-footer .footer-links {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    margin-top: 10px;
+    padding: 0;
+}
+
+.user-footer .footer-links a {
+    color: white;
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 500;
+    transition: 0.3s;
+}
+
+.user-footer .footer-links a:hover {
+    text-decoration: underline;
+}
+
+/* Responsive Footer */
+@media (max-width: 768px) {
+    .user-footer .footer-links {
+        flex-direction: column;
+        gap: 10px;
+    }
+}
