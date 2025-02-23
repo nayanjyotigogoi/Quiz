@@ -3,6 +3,11 @@
 namespace App\Http\Controllers;
 
 use App\Models\Question;
+use App\Models\Quiz;
+use App\Models\Subcategory;
+use App\Models\Category;
+use App\Models\Option;
+
 use Illuminate\Http\Request;
 
 class QuestionController extends Controller {

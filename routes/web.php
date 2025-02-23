@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\HomeController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\LoginController;
@@ -19,9 +20,12 @@ use App\Http\Controllers\RegistrationController;
 |--------------------------------------------------------------------------
 */
 
-// Home Route
-Route::get('/', [QuizController::class, 'index']);
+// // Home Route
+// Route::get('/', [QuizController::class, 'index']);
 
+Route::get('/', [HomeController::class, 'index'])->name('home');
+
+Route::get('/category/{id}/quizzes', [CategoryController::class, 'showQuizzes'])->name('category.quizzes');
 // Static Page (Categories)
 Route::get('pages/categories', function () {
     return view('pages.categories');
@@ -78,6 +82,7 @@ Route::middleware(['auth', 'preventBackHistory'])->group(function () {
     Route::get('/admin/add-question', function () {
         return view('admin.add_question');
     })->name('admin.add_question');
+
 });
 
 // =======================
@@ -91,6 +96,4 @@ Route::middleware(['auth', 'preventBackHistory'])->group(function () {
 
     // View for Quiz Attempt
     // Route::get('/quiz-results/{attempt}', [QuizAttemptController::class, 'quizResults'])->name('user.quiz_results');
-
-
 });

@@ -24,4 +24,3 @@ class UserAnswerController extends Controller {
         return response()->json(['message' => 'Answer saved']);
     }
 }
-

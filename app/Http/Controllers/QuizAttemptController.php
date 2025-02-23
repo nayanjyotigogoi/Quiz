@@ -108,4 +108,3 @@ class QuizAttemptController extends Controller {
 
     
 }
-

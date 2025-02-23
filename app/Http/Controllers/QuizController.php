@@ -44,7 +44,7 @@ class QuizController extends Controller
             'category_name' => 'nullable|string|max:255',
             'subcategory_id' => 'nullable|exists:subcategories,id',
             'subcategory_name' => 'nullable|string|max:255',
-            'quizzes_id' => 'nullable|exists:quizzes,id',
+            'quizzes_id' => 'nullable|exists:quizs,id',
             'quizzes_name' => 'nullable|string|max:255',
             'questions' => 'required|array',
             'questions.*.question_text' => 'required|string|max:1000',

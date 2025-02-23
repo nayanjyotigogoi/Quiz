@@ -13,4 +13,3 @@ class SubcategoryController extends Controller {
     }
 
 }
-

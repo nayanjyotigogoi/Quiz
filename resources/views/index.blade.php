@@ -1,66 +1,96 @@
 @extends('layouts.layout')
 
 @section('title', 'Welcome to QuizzyBee')
-
+@push('styles')
+    <link rel="stylesheet" href="{{ asset('css/home.css') }}">
+@endpush
 @section('content')
-    <main>
-        <div class="home-container">
-            <div class="floating-elements-container">
-                <!-- Floating Elements -->
-                <div class="floating-element">❓</div>
-                <div class="floating-element">⭐</div>
-                <div class="floating-element">🎯</div>
-                <div class="floating-element">💡</div>
-                <div class="floating-element">📜</div>
-            </div>
+<main>
+    <div class="home-container">
 
-            <section class="hero">
-                <h1 class="floating-text">Welcome to the Ultimate Quiz!</h1>
-                <p class="floating-text">Challenge yourself, have fun, and learn something new!</p>
-                <button id="start-btn" onclick="window.location.href='{{ url('/login') }}'">Start Quiz</button>
-            </section>
-
-            <!-- Login & Register Section -->
-            <!-- <section class="auth-section">
-                @guest
-                    <h2>Join QuizzyBee Today!</h2>
-                    <p>Create an account to track your progress and compete on the leaderboard.</p>
-                    <div class="auth-buttons">
-                        <a href="{{ url('/login') }}" class="btn btn-login">Login</a>
-                        <a href="{{ url('/register') }}" class="btn btn-register">Register</a>
-                    </div>
-                @else
-                    <h2>Welcome Back, {{ Auth::user()->name }}! 🎉</h2>
-                    <p>Ready to take on a new challenge?</p>
-                    <a href="{{ url('/dashboard') }}" class="btn btn-primary">Go to Dashboard</a>
-                @endguest
-            </section> -->
-
-            <section class="features">
-                <h2>Why Choose QuizzyBee?</h2>
-                <div class="feature-grid">
-                    <div class="feature-item">
-                        <h3>🏆 Leaderboard</h3>
-                        <p>Compete with players worldwide.</p>
-                    </div>
-                    <div class="feature-item">
-                        <h3>📚 Multiple Categories</h3>
-                        <p>Explore quizzes in various subjects.</p>
-                    </div>
-                    <div class="feature-item">
-                        <h3>🎯 Instant Feedback</h3>
-                        <p>Get answers and explanations instantly.</p>
-                    </div>
-                </div>
-            </section>
-
-            <section class="testimonials">
-                <h2>What Players Say</h2>
-                <div class="testimonial-box">
-                    <p>"QuizzyBee is the best way to test my knowledge while having fun!"</p>
-                    <span>- Happy User</span>
-                </div>
-            </section>
+        <!-- Animated Floating Elements -->
+        <div class="floating-elements-container">
+            <div class="floating-element">❓</div>
+            <div class="floating-element">⭐</div>
+            <div class="floating-element">🎯</div>
+            <div class="floating-element">💡</div>
+            <div class="floating-element">📜</div>
         </div>
-    </main>
+
+        <!-- Hero Section -->
+        <section class="hero">
+            <h1 class="animated-text">Welcome to <span>QuizzyBee</span>!</h1>
+            <p class="animated-text">Challenge yourself, test your knowledge, and have fun!</p>
+            <button class="glow-button" onclick="window.location.href='{{ url('/login') }}'">Start Your Quiz 🚀</button>
+        </section>
+
+        <!-- How It Works Section -->
+        <section class="how-it-works">
+            <h2>🎮 How It Works</h2>
+            <div class="steps-container">
+                <div class="step">1️⃣ Select a Category</div>
+                <div class="step">1️⃣ Select a SubCategory</div>
+                <div class="step">2️⃣ Pick a Quiz Title</div>
+                <div class="step">3️⃣ Answer Questions</div>
+                <div class="step">4️⃣ Get Your Score!</div>
+            </div>
+        </section>
+
+        <!-- Strong Call to Action -->
+        <section class="cta-section">
+            <h2>🎯 Ready to Test Your Knowledge?</h2>
+            <button class="glow-button" onclick="window.location.href='{{ url('/register') }}'">Join Now 🚀</button>
+        </section>
+
+        <!-- Why QuizzyBee? -->
+        <section class="why-quizzybee">
+            <h2>💡 Why QuizzyBee?</h2>
+            <p>📌 Fun & Engaging Quizzes</p>
+            <p>📌 Wide Variety of Categories</p>
+            <p>📌 Instant Feedback & Scores</p>
+            <p>📌 Play Anytime, Anywhere</p>
+        </section>
+
+        <!-- Fun Quiz Facts -->
+        <section class="fun-facts">
+            <h2>💬 Fun Quiz Facts</h2>
+            <p>🧠 Did you know? Taking quizzes can improve memory retention by 50%!</p>
+            <p>🎭 The first-ever trivia game was played in the 1940s!</p>
+            <p>🌍 Over 1 million quizzes are played online every day!</p>
+        </section>
+
+        
+
+        <!-- Recent Quizzes Section -->
+        <section class="recent-quizzes">
+            <h2>🔥 Recent Quizzes</h2>
+            <div class="quiz-grid">
+                @foreach($recentQuizzes as $quiz)
+                    <div class="quiz-card">
+                        <h3>{{ $quiz->quizzes_name }}</h3>
+                        <a href="{{ route('quiz.start', $quiz->id) }}" class="take-quiz-btn">Take Quiz</a>
+                    </div>
+                @endforeach
+            </div>
+        </section>
+
+        <!-- Categories Section -->
+        <section class="categories">
+            <h2>📚 Explore Categories</h2>
+            <div class="category-grid">
+                @foreach($categories as $category)
+                    <div class="category-card">
+                        <h3>{{ $category->Category_name }}</h3>
+                        <a href="{{ route('category.quizzes', $category->id) }}" class="explore-btn">Explore</a>
+                    </div>
+                @endforeach
+            </div>
+        </section>
+
+    </div>
+</main>
+
 @endsection
+@push('scripts')
+    <script src="{{ asset('js/home.js') }}"></script>
+@endpush
