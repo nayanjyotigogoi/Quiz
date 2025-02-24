@@ -11,7 +11,7 @@
     <link rel="stylesheet" href="{{ asset('css/user_navbar.css') }}">
     <link rel="stylesheet" href="{{ asset('css/my_quizzes.css') }}">
     <link rel="stylesheet" href="{{ asset('css/user_footer.css') }}">
-
+    @stack('styles')
 </head>
 <body>
     @include('layouts.user_navbar')
@@ -33,6 +33,7 @@
     </div>
 
     <!-- @include('layouts.user_footer') -->
+     @stack('scripts')
 
     <script>
         document.addEventListener('DOMContentLoaded', function() {
